@@ -1,1 +1,116 @@
-[]
+[
+  {
+    "function": "clouddelightmaterials",
+    "service": "S3",
+    "runtime": "AES256",
+    "score": 70,
+    "label": "Moderate",
+    "issues": [
+      "Public access not fully blocked \u2014 review ACLs/bucket policy",
+      "Versioning disabled \u2014 Azure Blob versioning needs to be enabled manually",
+      "1 lifecycle rule(s) \u2014 re-create as Azure Blob lifecycle policies"
+    ]
+  },
+  {
+    "function": "testbucketclouddelight123",
+    "service": "S3",
+    "runtime": "AES256",
+    "score": 70,
+    "label": "Moderate",
+    "issues": [
+      "Public access not fully blocked \u2014 review ACLs/bucket policy",
+      "2 lifecycle rule(s) \u2014 re-create as Azure Blob lifecycle policies"
+    ]
+  },
+  {
+    "function": "clouddelight-demo-xyz-123",
+    "service": "S3",
+    "runtime": "AES256",
+    "score": 75,
+    "label": "Moderate",
+    "issues": [
+      "Public access not fully blocked \u2014 review ACLs/bucket policy",
+      "Versioning disabled \u2014 Azure Blob versioning needs to be enabled manually"
+    ]
+  },
+  {
+    "function": "aws-assignment-wan-hubspoke-state",
+    "service": "S3",
+    "runtime": "AES256",
+    "score": 95,
+    "label": "Easy",
+    "issues": [
+      "Versioning disabled \u2014 Azure Blob versioning needs to be enabled manually"
+    ]
+  },
+  {
+    "function": "bedrock-agentcore-runtime-119810927698-us-east-1-9gpk9aluok",
+    "service": "S3",
+    "runtime": "AES256",
+    "score": 95,
+    "label": "Easy",
+    "issues": [
+      "Versioning disabled \u2014 Azure Blob versioning needs to be enabled manually"
+    ]
+  },
+  {
+    "function": "bedrock-video-generation-us-east-1-5z377k",
+    "service": "S3",
+    "runtime": "AES256",
+    "score": 95,
+    "label": "Easy",
+    "issues": [
+      "Versioning disabled \u2014 Azure Blob versioning needs to be enabled manually"
+    ]
+  },
+  {
+    "function": "clouddelight-demo-xyz-123456",
+    "service": "S3",
+    "runtime": "AES256",
+    "score": 95,
+    "label": "Easy",
+    "issues": [
+      "Versioning disabled \u2014 Azure Blob versioning needs to be enabled manually"
+    ]
+  },
+  {
+    "function": "mcp-bucket-86dfc9",
+    "service": "S3",
+    "runtime": "AES256",
+    "score": 95,
+    "label": "Easy",
+    "issues": [
+      "Versioning disabled \u2014 Azure Blob versioning needs to be enabled manually"
+    ]
+  },
+  {
+    "function": "mcp-bucket-a3f85a",
+    "service": "S3",
+    "runtime": "AES256",
+    "score": 95,
+    "label": "Easy",
+    "issues": [
+      "Versioning disabled \u2014 Azure Blob versioning needs to be enabled manually"
+    ]
+  },
+  {
+    "function": "terraform-backend-clouddelight-work",
+    "service": "S3",
+    "runtime": "AES256",
+    "score": 95,
+    "label": "Easy",
+    "issues": [
+      "Versioning disabled \u2014 Azure Blob versioning needs to be enabled manually"
+    ]
+  },
+  {
+    "function": "terraform-tfstates-clouddelight",
+    "service": "S3",
+    "runtime": "AES256",
+    "score": 95,
+    "label": "Easy",
+    "issues": [
+      "Versioning disabled \u2014 Azure Blob versioning needs to be enabled manually"
+    ]
+  }
+]

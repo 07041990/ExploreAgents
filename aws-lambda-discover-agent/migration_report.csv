@@ -1,1 +1,12 @@
-function,runtime,score,label,issues
+service,function,runtime,score,label,issues
+S3,clouddelightmaterials,AES256,70,Moderate,Public access not fully blocked — review ACLs/bucket policy | Versioning disabled — Azure Blob versioning needs to be enabled manually | 1 lifecycle rule(s) — re-create as Azure Blob lifecycle policies
+S3,testbucketclouddelight123,AES256,70,Moderate,Public access not fully blocked — review ACLs/bucket policy | 2 lifecycle rule(s) — re-create as Azure Blob lifecycle policies
+S3,clouddelight-demo-xyz-123,AES256,75,Moderate,Public access not fully blocked — review ACLs/bucket policy | Versioning disabled — Azure Blob versioning needs to be enabled manually
+S3,aws-assignment-wan-hubspoke-state,AES256,95,Easy,Versioning disabled — Azure Blob versioning needs to be enabled manually
+S3,bedrock-agentcore-runtime-119810927698-us-east-1-9gpk9aluok,AES256,95,Easy,Versioning disabled — Azure Blob versioning needs to be enabled manually
+S3,bedrock-video-generation-us-east-1-5z377k,AES256,95,Easy,Versioning disabled — Azure Blob versioning needs to be enabled manually
+S3,clouddelight-demo-xyz-123456,AES256,95,Easy,Versioning disabled — Azure Blob versioning needs to be enabled manually
+S3,mcp-bucket-86dfc9,AES256,95,Easy,Versioning disabled — Azure Blob versioning needs to be enabled manually
+S3,mcp-bucket-a3f85a,AES256,95,Easy,Versioning disabled — Azure Blob versioning needs to be enabled manually
+S3,terraform-backend-clouddelight-work,AES256,95,Easy,Versioning disabled — Azure Blob versioning needs to be enabled manually
+S3,terraform-tfstates-clouddelight,AES256,95,Easy,Versioning disabled — Azure Blob versioning needs to be enabled manually

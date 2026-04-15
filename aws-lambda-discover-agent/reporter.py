@@ -1,38 +1,54 @@
 import json, csv
+from collections import defaultdict
 
-SYMBOLS = {"Easy":"[OK]","Moderate":"[~~]","Hard":"[!!]","Rewrite needed":"[XX]"}
+SYMBOLS = {
+    "Easy":           "[OK]",
+    "Moderate":       "[~~]",
+    "Hard":           "[!!]",
+    "Rewrite needed": "[XX]",
+}
 
 def print_report(results):
-    counts = {}
+    by_service = defaultdict(list)
     for r in results:
-        counts[r["label"]] = counts.get(r["label"], 0) + 1
-    print("\n" + "="*60)
-    print("LAMBDA -> AZURE MIGRATION FEASIBILITY REPORT")
-    print("="*60)
-    print(f"Total functions : {len(results)}")
-    for label, count in counts.items():
-        sym = SYMBOLS.get(label,"")
-        print(f"  {sym} {label:20s}: {count}")
-    print("\n--- Per-function detail (hardest first) ---\n")
+        by_service[r.get("service","Lambda")].append(r)
+
+    total_counts = {}
     for r in results:
-        sym = SYMBOLS.get(r["label"],"")
-        print(f"{sym} [{r['score']:3}/100] {r['function']} ({r['runtime']})")
-        for issue in r["issues"]:
-            print(f"     > {issue}")
-        print()
+        total_counts[r["label"]] = total_counts.get(r["label"], 0) + 1
+
+    print("\n" + "="*65)
+    print("MULTI-SERVICE AWS -> AZURE MIGRATION FEASIBILITY REPORT")
+    print("="*65)
+    print(f"Total resources scanned: {len(results)}")
+    for label, count in total_counts.items():
+        print(f"  {SYMBOLS.get(label,'')} {label:22s}: {count}")
+
+    for svc, items in sorted(by_service.items()):
+        print(f"\n{'─'*65}")
+        print(f"  {svc}  ({len(items)} resources)")
+        print(f"{'─'*65}")
+        for r in items:
+            sym = SYMBOLS.get(r["label"],"")
+            rt  = r.get("runtime","")
+            rt_str = f" ({rt})" if rt else ""
+            print(f"{sym} [{r['score']:3}/100] {r['function']}{rt_str}")
+            for issue in r.get("issues",[]):
+                print(f"       > {issue}")
+            print()
 
 def save_csv(results, path="migration_report.csv"):
-    with open(path, "w", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=["function","runtime",
-                                           "score","label","issues"])
+    fieldnames = ["service","function","runtime","score","label","issues"]
+    with open(path, "w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=fieldnames, extrasaction="ignore")
         w.writeheader()
         for r in results:
             row = dict(r)
-            row["issues"] = " | ".join(r["issues"])
+            row["issues"] = " | ".join(r.get("issues",[]))
             w.writerow(row)
-    print(f"CSV saved: {path}")
+    print(f"CSV report saved: {path}")
 
 def save_json(results, path="migration_report.json"):
-    with open(path, "w") as f:
-        json.dump(results, f, indent=2)
-    print(f"JSON saved: {path}")
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(results, f, indent=2, default=str)
+    print(f"JSON report saved: {path}")
